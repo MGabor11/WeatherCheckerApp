@@ -1,4 +1,4 @@
-package com.example.weathercheckerapp
+package com.weather.weathercheckerapp
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
