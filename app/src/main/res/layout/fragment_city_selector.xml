@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".fragment.CitySelectorFragment">
 
-    <TextView
-        android:id="@+id/hello_text"
+    <fragment
+        android:id="@+id/place_autocomplete_fragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="@string/hello_world" />
+        android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment"
+        />
 
 </FrameLayout>
