@@ -6,6 +6,10 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'org.sonarqube'
+
+apply plugin: 'jacoco-android'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -59,4 +63,23 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:3.1.0-alpha4"
 
     androidTestUtil "androidx.test:orchestrator:$test_runner"
+}
+
+sonarqube {
+    properties {
+        def libraries = project.android.sdkDirectory.getPath() + "/platforms/android-28/android.jar"
+        property "sonar.sources", "src/main/java"
+        property "sonar.binaries", "build/intermediates/classes/debug"
+        property "sonar.libraries", libraries
+        property "sonar.tests", "src/test/java, src/androidTest/java"
+        property "sonar.java.test.binaries", "build/intermediates/class/debug"
+        property "sonar.java.test.libraries", libraries
+        property "sonar.jacoco.reportPath", "build/jacoco/testDebugUnitTest.exec"
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.junit.reportsPath", "build/test-results/debug"
+        property "sonar.android.lint.report", "build/outputs/lint-results"
+        property "sonar.test.inclusions","**/*Test*/**"
+        property "sonar.exclusions","**/*Test*/**"
+    }
+
 }
