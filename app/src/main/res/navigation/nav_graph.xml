@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/citySelectorFragment"
         android:name="com.weather.weathercheckerapp.fragment.CitySelectorFragment"
-        android:label="cityselector_container"
+        android:label="fragment_city_selector"
         tools:layout="@layout/fragment_city_selector" />
 
 </navigation>
