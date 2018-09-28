@@ -3,11 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainActivity">
+    app:startDestination="@id/citySelectorFragment">
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="com.weather.weathercheckerapp.MainActivity"
-        android:label="activity_main"
-        tools:layout="@layout/activity_main" />
+    <fragment
+        android:id="@+id/citySelectorFragment"
+        android:name="com.weather.weathercheckerapp.fragment.CitySelectorFragment"
+        android:label="cityselector_container"
+        tools:layout="@layout/fragment_city_selector" />
+
 </navigation>
