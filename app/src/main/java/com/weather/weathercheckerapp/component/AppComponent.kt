@@ -23,5 +23,4 @@ interface AppComponent : AndroidInjector<WeatherApplication> {
 
         fun build(): AppComponent
     }
-
 }

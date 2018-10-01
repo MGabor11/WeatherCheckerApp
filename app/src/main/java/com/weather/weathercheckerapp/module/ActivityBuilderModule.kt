@@ -9,5 +9,4 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector()
     internal abstract fun bindMainActivity(): MainActivity
-
 }

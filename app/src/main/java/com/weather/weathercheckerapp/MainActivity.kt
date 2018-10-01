@@ -18,7 +18,5 @@ class MainActivity : DaggerAppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val vm = ViewModelProviders.of(this, viewModelFactory)[MainViewModel::class.java]
-
     }
-
 }
