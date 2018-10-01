@@ -11,8 +11,7 @@ import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ViewModelFactoryModule::class, ViewModelModule::class,
-    AndroidSupportInjectionModule::class, ActivityBuilderModule::class])
+@Component(modules = [ViewModelFactoryModule::class, ViewModelModule::class, AndroidSupportInjectionModule::class, ActivityBuilderModule::class])
 interface AppComponent : AndroidInjector<WeatherApplication> {
 
     override fun inject(application: WeatherApplication)
