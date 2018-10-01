@@ -1,5 +1,7 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
+
+
 buildscript {
     ext.kotlin_version = '1.2.71'
     ext.lifecycle_version = "2.0.0"
@@ -32,7 +34,6 @@ plugins {
     id("io.gitlab.arturbosch.detekt").version("1.0.0.RC9.2")
 }
 
-
 allprojects {
     repositories {
         google()
@@ -44,24 +45,7 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 
-detekt {
-    debug = true
-    toolVersion = "$detekt_version"
-    input = files("app/src/main/java")
-    filters = ".*/resources/.*,.*/build/.*"
-    reports {
-        xml.enabled = true
-        html {
-            enabled = true
-            destination = file("detekt/detekt.html")
-        }
-    }
-}
-
-
-dependencies {
-    detekt "io.gitlab.arturbosch.detekt:detekt-formatting:$detekt_version"
-}
+apply from: 'detekttask.gradle'
 
 
 

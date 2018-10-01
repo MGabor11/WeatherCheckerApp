@@ -1,0 +1,17 @@
+detekt {
+    debug = true
+    toolVersion = "$detekt_version"
+    input = files("app/src/main/java")
+    filters = ".*/resources/.*,.*/build/.*"
+    reports {
+        xml.enabled = true
+        html {
+            enabled = true
+            destination = file("build/reports/detekt/detekt.html")
+        }
+    }
+}
+
+dependencies {
+    detekt "io.gitlab.arturbosch.detekt:detekt-formatting:$detekt_version"
+}
