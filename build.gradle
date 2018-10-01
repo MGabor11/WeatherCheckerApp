@@ -6,6 +6,7 @@ buildscript {
     ext.dagger_version = "2.16"
     ext.test_runner = "1.1.0-alpha4"
     ext.detekt_version = "1.0.0.RC9.2"
+    ext.target_sdk_version = "28"
     repositories {
         google()
         jcenter()
@@ -21,8 +22,6 @@ buildscript {
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
-        //sonar-scanner.bat -Dsonar.projectKey=weatherapp -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=bf344592d8c309f7498c3a0a0a11dc09c5b8fd2d
-        //gradlew clean test jacocoTestReport sonarqube -Dsonar.projectKey=weatherapp -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=bf344592d8c309f7498c3a0a0a11dc09c5b8fd2d
     }
 
 }

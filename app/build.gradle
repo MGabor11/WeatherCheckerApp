@@ -15,7 +15,7 @@ android {
     defaultConfig {
         applicationId "com.weather.weathercheckerapp"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion target_sdk_version
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -67,7 +67,7 @@ dependencies {
 
 sonarqube {
     properties {
-        def libraries = project.android.sdkDirectory.getPath() + "/platforms/android-28/android.jar"
+        def libraries = project.android.sdkDirectory.getPath() + "/platforms/android-$target_sdk_version/android.jar"
         property "sonar.sources", "src/main/java"
         property "sonar.binaries", "build/intermediates/classes/debug"
         property "sonar.libraries", libraries
