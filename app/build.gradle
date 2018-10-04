@@ -73,3 +73,4 @@ dependencies {
 }
 
 apply from: 'sonarqubetask.gradle'
+apply from: 'detekttask.gradle'

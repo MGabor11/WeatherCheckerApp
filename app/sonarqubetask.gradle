@@ -13,6 +13,8 @@ sonarqube {
         property "sonar.android.lint.report", "build/outputs/lint-results"
         property "sonar.test.inclusions","**/*Test*/**"
         property "sonar.exclusions","**/*Test*/**"
+        property "sonar.projectKey","weatherapp"
+        property "sonar.host.url","http://localhost:9000"
     }
 
 }

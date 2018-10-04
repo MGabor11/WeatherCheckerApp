@@ -1,0 +1,21 @@
+configurations {
+    detekt
+}
+//my task
+task detekt(type: JavaExec) {
+    main = "io.gitlab.arturbosch.detekt.cli.Main"
+    classpath = configurations.detekt
+    def input = "$projectDir/src/main/java"
+    def config = "$rootDir/detektconfig/config.yml"
+    def filters = ".*test.*,.*/resources/.*,.*/tmp/.*"
+    def output = "html:$buildDir/reports/detekt-results.html"
+    def params = ['--debug', '-i', input, '-c', config, '-f', filters, '-r', output]
+    println("PARAMS = $params") //to make sure the path is right
+    args(params)
+}
+
+check.dependsOn detekt
+
+dependencies {
+    detekt 'io.gitlab.arturbosch.detekt:detekt-cli:1.0.0.RC9.2'
+}
