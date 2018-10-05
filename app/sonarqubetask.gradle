@@ -1,3 +1,7 @@
+apply plugin: 'org.sonarqube'
+
+apply plugin: 'jacoco-android'
+
 sonarqube {
     properties {
         def libraries = project.android.sdkDirectory.getPath() + "/platforms/android-$target_sdk_version/android.jar"
