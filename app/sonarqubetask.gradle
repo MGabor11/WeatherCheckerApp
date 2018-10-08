@@ -1,0 +1,24 @@
+apply plugin: 'org.sonarqube'
+
+apply plugin: 'jacoco-android'
+
+sonarqube {
+    properties {
+        def libraries = project.android.sdkDirectory.getPath() + "/platforms/android-$target_sdk_version/android.jar"
+        property "sonar.sources", "src/main/java"
+        property "sonar.binaries", "build/intermediates/classes/debug"
+        property "sonar.libraries", libraries
+        property "sonar.tests", "src/test/java, src/androidTest/java"
+        property "sonar.java.test.binaries", "build/intermediates/class/debug"
+        property "sonar.java.test.libraries", libraries
+        property "sonar.jacoco.reportPath", "build/jacoco/testDebugUnitTest.exec"
+        property "sonar.java.coveragePlugin", "jacoco"
+        property "sonar.junit.reportsPath", "build/test-results/debug"
+        property "sonar.android.lint.report", "build/outputs/lint-results"
+        property "sonar.test.inclusions","**/*Test*/**"
+        property "sonar.exclusions","**/*Test*/**"
+        property "sonar.projectKey","weatherapp"
+        property "sonar.host.url","http://localhost:9000"
+    }
+
+}

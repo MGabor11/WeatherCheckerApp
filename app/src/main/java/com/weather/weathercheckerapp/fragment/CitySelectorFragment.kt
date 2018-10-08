@@ -7,10 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.weather.weathercheckerapp.R
 
-class CitySelectorFragment : Fragment(){
+class CitySelectorFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_city_selector, container, false)
     }
-
 }

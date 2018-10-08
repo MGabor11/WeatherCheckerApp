@@ -8,7 +8,9 @@ import javax.inject.Singleton
 
 @Suppress("UNCHECKED_CAST")
 @Singleton
-class ViewModelFactory @Inject constructor(private val viewModelsMap: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>) : ViewModelProvider.Factory {
+class ViewModelFactory @Inject constructor(
+    private val viewModelsMap: Map<Class<out ViewModel>, @JvmSuppressWildcards Provider<ViewModel>>
+) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
 
@@ -19,7 +21,5 @@ class ViewModelFactory @Inject constructor(private val viewModelsMap: Map<Class<
                 ?.get() as? T
 
                 ?: throw IllegalArgumentException("unknown model class $modelClass")
-
     }
-
 }

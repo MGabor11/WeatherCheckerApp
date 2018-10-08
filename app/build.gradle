@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId "com.weather.weathercheckerapp"
         minSdkVersion 21
-        targetSdkVersion 28
+        targetSdkVersion target_sdk_version
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -67,3 +67,6 @@ dependencies {
 
     androidTestUtil "androidx.test:orchestrator:$test_runner"
 }
+
+apply from: 'sonarqubetask.gradle'
+apply from: 'detekttask.gradle'

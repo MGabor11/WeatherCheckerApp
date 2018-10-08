@@ -1,0 +1,16 @@
+
+- Download SonarQube from https://www.sonarqube.org/downloads/
+- Downloaded version will come in Zip, just unzip it
+- Goto /sonarcube/bin/<platform-folder>
+- Hit startsonar.bat to start running SonarQube on server
+- Now open http://localhost:9000 to see admin panel of SonarQube
+- Login to user panel using “admin” for username and password
+- Create a project on Sonarqube panel
+- During project creation you have to select a project key, and you will get a login hash code for the project
+- Run this command after implementation of gradle part in app.gradle: gradlew clean test jacocoTestReport sonarqube -Dsonar.projectKey=yourprojectkey -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=yourprojecthash
+- e.g.: gradlew clean test jacocoTestReport sonarqube -Dsonar.projectKey=weatherapp -Dsonar.sources=. -Dsonar.host.url=http://localhost:9000 -Dsonar.login=bf344592d8c309f7498c3a0a0a11dc09c5b8fd2d
+
+
+Used articles:
+https://medium.com/@sandeeptengale/integrate-sonarqube-for-android-application-development-8e40ec28e343
+https://android.jlelse.eu/have-code-quality-analysis-in-your-android-project-2a549e04d1a8
