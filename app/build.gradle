@@ -63,6 +63,7 @@ dependencies {
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC2"
 
     androidTestImplementation "androidx.test:runner:$test_runner"
+    androidTestImplementation 'com.android.support.test:rules:0.4'
     androidTestImplementation "androidx.test.espresso:espresso-core:3.1.0-alpha4"
 
     androidTestImplementation "android.arch.navigation:navigation-testing-ktx:$nav_version"
