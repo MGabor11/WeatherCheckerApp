@@ -4,7 +4,7 @@ detekt {
     debug = true
     toolVersion = "$detekt_version"
     input = files("src/main/java")
-    filters = ".*/resources/.*,.*/build/.*"
+    filters = ".*/resources/.*,WeatherCheckerApp/.*/build/.*"
     config = files("${project.rootDir}/detektconfig/config.yml")
     reports {
         xml.enabled = true
