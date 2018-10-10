@@ -41,7 +41,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation "androidx.appcompat:appcompat:1.0.0-rc02"
+    implementation "androidx.appcompat:appcompat:1.0.0"
     implementation "androidx.constraintlayout:constraintlayout:2.0.0-alpha2"
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
@@ -57,15 +57,15 @@ dependencies {
     kapt "com.google.dagger:dagger-android-processor:$dagger_version"
     kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
-    implementation "com.google.android.gms:play-services-places:15.0.1"
+    implementation "com.google.android.gms:play-services-places:16.0.0"
 
     testImplementation 'junit:junit:4.12'
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.0.0-RC2"
 
     androidTestImplementation "androidx.test:runner:$test_runner"
-    androidTestImplementation 'com.android.support.test:rules:0.4'
-    androidTestImplementation "androidx.test.espresso:espresso-core:3.1.0-alpha4"
-    androidTestImplementation 'com.android.support.test.uiautomator:uiautomator-v18:2.1.1'
+    androidTestImplementation 'androidx.test:rules:1.1.0-beta01'
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.1.0-beta01"
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator-v18:2.2.0-alpha1'
 
     androidTestImplementation "android.arch.navigation:navigation-testing-ktx:$nav_version"
 

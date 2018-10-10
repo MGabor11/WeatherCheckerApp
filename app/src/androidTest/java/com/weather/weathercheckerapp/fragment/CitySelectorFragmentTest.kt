@@ -1,11 +1,11 @@
 package com.weather.weathercheckerapp.fragment
 
 import android.widget.EditText
-import androidx.test.InstrumentationRegistry
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
 import androidx.test.uiautomator.By
@@ -28,8 +28,6 @@ class CitySelectorFragmentTest {
 
     private lateinit var device: UiDevice
 
-    private var city: String = "Budapest"
-
     @Before
     fun setUp() {
         device = UiDevice.getInstance(InstrumentationRegistry.getInstrumentation())
@@ -46,18 +44,21 @@ class CitySelectorFragmentTest {
     @Test
     fun testSearchCity() {
         onView(withId(R.id.place_autocomplete_search_button)).perform(click())
-        Thread.sleep(700)
+        Thread.sleep(DEFAULT_SLEEP_TIME)
         val input = device.findObject(UiSelector().instance(0).className(EditText::class.java))
-        input.text = city
-        Thread.sleep(700)
-        val firstResult = device.findObjects(By.text(city)).get(1)
+        input.text = CITY
+        Thread.sleep(DEFAULT_SLEEP_TIME)
+        val firstResult = device.findObjects(By.text(CITY))[1]
         firstResult.click()
-        Thread.sleep(700)
+        Thread.sleep(DEFAULT_SLEEP_TIME)
         onView(withId(R.id.place_autocomplete_fragment)).check(matches(isDisplayed()))
-        onView(withId(R.id.place_autocomplete_search_input)).check(matches(withText(city)))
+        onView(withId(R.id.place_autocomplete_search_input)).check(matches(withText(CITY)))
         onView(withId(R.id.place_autocomplete_clear_button)).check(matches((isDisplayed())))
         onView(withId(R.id.place_autocomplete_clear_button)).perform(click())
         onView(withId(R.id.place_autocomplete_clear_button)).check(matches(not(isDisplayed())))
     }
 
 }
+
+private const val CITY = "Budapest"
+private const val DEFAULT_SLEEP_TIME = 700L
