@@ -1,10 +1,13 @@
+sudo: required
+
 language: android
-install: ant deps
+jdk: oraclejdk8
 android:
   components:
     - tools
     - platform-tools
     - tools
+    - extra
 
     # The BuildTools version used by your project
     - build-tools-28.0.3
@@ -23,3 +26,5 @@ android:
     # if you need to run emulator(s) during your tests
     - sys-img-armeabi-v7a-android-28
     - sys-img-armeabi-v7a-android-26
+script:
+- ./gradlew clean build check
