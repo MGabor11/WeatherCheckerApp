@@ -19,9 +19,8 @@ class WeatherApplication : Application(), HasActivityInjector {
         DaggerAppComponent.builder()
                 .application(this)
                 .build()
-                .inject(this);
+                .inject(this)
     }
 
     override fun activityInjector(): AndroidInjector<Activity> = activityDispatchingAndroidInjector
-
 }

@@ -16,7 +16,6 @@ import dagger.android.support.AndroidSupportInjection
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-
 class CitySelectorFragment : DaggerFragment(){
 
     @Inject
@@ -55,5 +54,4 @@ class CitySelectorFragment : DaggerFragment(){
             onChange { viewModel.queryCity = text.toString() }
         }
     }
-
 }
