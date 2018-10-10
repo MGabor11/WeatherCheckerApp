@@ -26,5 +26,13 @@ android:
     # if you need to run emulator(s) during your tests
     - sys-img-armeabi-v7a-android-28
     - sys-img-armeabi-v7a-android-26
+licenses:
+- android-sdk-preview-license-.+
+- android-sdk-license-.+
+- google-gdk-license-.+
+
+before_install:
+- yes | sdkmanager "platforms;android-28"
+- chmod +x gradlew
 script:
-- gradlew clean build check
+- ./gradlew clean build check
