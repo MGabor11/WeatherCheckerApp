@@ -27,4 +27,4 @@ android:
     - sys-img-armeabi-v7a-android-28
     - sys-img-armeabi-v7a-android-26
 script:
-- ./gradlew clean build check
+- gradlew clean build check
