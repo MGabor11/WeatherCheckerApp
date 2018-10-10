@@ -7,13 +7,17 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.lifecycle.ViewModelProviders
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment
+import com.google.android.gms.common.api.Status
+import com.google.android.gms.location.places.AutocompleteFilter
+import com.google.android.gms.location.places.Place
+import com.google.android.gms.location.places.ui.PlaceSelectionListener
+import com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment
 import com.weather.weathercheckerapp.R
 import com.weather.weathercheckerapp.ViewModelFactory
-import com.weather.weathercheckerapp.util.onChange
 import com.weather.weathercheckerapp.viewmodel.CitySelectorViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
+
 
 class CitySelectorFragment : DaggerFragment() {
 
@@ -22,6 +26,8 @@ class CitySelectorFragment : DaggerFragment() {
 
     private lateinit var viewModel: CitySelectorViewModel
 
+    private var placeAutocompleteFragment: SupportPlaceAutocompleteFragment? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel = ViewModelProviders.of(this, viewModelFactory)[CitySelectorViewModel::class.java]
@@ -29,11 +35,14 @@ class CitySelectorFragment : DaggerFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_city_selector, container, false).also {
-            initAutoCompleteInput(it)
+            placeAutocompleteFragment = childFragmentManager.findFragmentById(R.id.place_autocomplete_fragment) as SupportPlaceAutocompleteFragment?
+            initAutoCompleteInputStyle(it)
+            setCityTypeFilter()
+            setOnPlaceChangedListener()
         }
     }
 
-    private fun initAutoCompleteInput(view: View) {
+    private fun initAutoCompleteInputStyle(view: View) {
         view.findViewById<ImageView>(R.id.place_autocomplete_search_button).apply {
             setImageDrawable(resources.getDrawable(R.drawable.ic_search, null))
         }
@@ -45,7 +54,25 @@ class CitySelectorFragment : DaggerFragment() {
         view.findViewById<EditText>(R.id.place_autocomplete_search_input).apply {
             setTextColor(resources.getColor(R.color.primaryTextColor))
             setHintTextColor(resources.getColor(R.color.primaryTextColor))
-            onChange { viewModel.queryCity.value = text.toString() }
         }
+    }
+
+    private fun setCityTypeFilter() {
+        val typeFilter = AutocompleteFilter.Builder()
+                .setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES)
+                .build()
+        placeAutocompleteFragment!!.setFilter(typeFilter)
+    }
+
+    private fun setOnPlaceChangedListener() {
+        placeAutocompleteFragment!!.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+            override fun onPlaceSelected(place: Place) {
+                viewModel.queryCity.value = place.toString()
+            }
+
+            override fun onError(status: Status) {
+                // not implemented
+            }
+        })
     }
 }
