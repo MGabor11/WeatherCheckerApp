@@ -68,7 +68,7 @@ class CitySelectorFragment : DaggerFragment() {
     private fun setOnPlaceChangedListener() {
         placeAutocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
-                viewModel.queryCity.value = place.toString()
+                viewModel.queryCity.value = place
             }
 
             override fun onError(status: Status) {
