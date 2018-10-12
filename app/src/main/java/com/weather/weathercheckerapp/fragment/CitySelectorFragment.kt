@@ -19,7 +19,6 @@ import com.weather.weathercheckerapp.viewmodel.CitySelectorViewModel
 import dagger.android.support.DaggerFragment
 import javax.inject.Inject
 
-
 class CitySelectorFragment : DaggerFragment() {
 
     @Inject
@@ -35,9 +34,9 @@ class CitySelectorFragment : DaggerFragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_city_selector, container, false).also {
+        return inflater.inflate(R.layout.fragment_city_selector, container, false).also { view ->
             placeAutocompleteFragment = childFragmentManager.findFragmentById(R.id.place_autocomplete_fragment) as SupportPlaceAutocompleteFragment
-            initAutoCompleteInputStyle(it)
+            initAutoCompleteInputStyle(view)
             setCityTypeFilter()
             setOnPlaceChangedListener()
         }
