@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.gms.common.api.Status
 import com.google.android.gms.location.places.AutocompleteFilter
@@ -26,7 +27,7 @@ class CitySelectorFragment : DaggerFragment() {
 
     private lateinit var viewModel: CitySelectorViewModel
 
-    private var placeAutocompleteFragment: SupportPlaceAutocompleteFragment? = null
+    private lateinit var placeAutocompleteFragment: SupportPlaceAutocompleteFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +36,7 @@ class CitySelectorFragment : DaggerFragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return inflater.inflate(R.layout.fragment_city_selector, container, false).also {
-            placeAutocompleteFragment = childFragmentManager.findFragmentById(R.id.place_autocomplete_fragment) as SupportPlaceAutocompleteFragment?
+            placeAutocompleteFragment = childFragmentManager.findFragmentById(R.id.place_autocomplete_fragment) as SupportPlaceAutocompleteFragment
             initAutoCompleteInputStyle(it)
             setCityTypeFilter()
             setOnPlaceChangedListener()
@@ -52,8 +53,8 @@ class CitySelectorFragment : DaggerFragment() {
         }
 
         view.findViewById<EditText>(R.id.place_autocomplete_search_input).apply {
-            setTextColor(resources.getColor(R.color.primaryTextColor))
-            setHintTextColor(resources.getColor(R.color.primaryTextColor))
+            setTextColor(ContextCompat.getColor(context, R.color.primaryTextColor))
+            setHintTextColor(ContextCompat.getColor(context, R.color.primaryTextColor))
         }
     }
 
@@ -61,11 +62,11 @@ class CitySelectorFragment : DaggerFragment() {
         val typeFilter = AutocompleteFilter.Builder()
                 .setTypeFilter(AutocompleteFilter.TYPE_FILTER_CITIES)
                 .build()
-        placeAutocompleteFragment!!.setFilter(typeFilter)
+        placeAutocompleteFragment.setFilter(typeFilter)
     }
 
     private fun setOnPlaceChangedListener() {
-        placeAutocompleteFragment!!.setOnPlaceSelectedListener(object : PlaceSelectionListener {
+        placeAutocompleteFragment.setOnPlaceSelectedListener(object : PlaceSelectionListener {
             override fun onPlaceSelected(place: Place) {
                 viewModel.queryCity.value = place.toString()
             }
