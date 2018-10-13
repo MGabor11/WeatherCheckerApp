@@ -3,13 +3,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@drawable/gradient_bakground"
     tools:context=".fragment.CitySelectorFragment">
 
-    <TextView
-        android:id="@+id/hello_text"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/search_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/hello_world" />
+        android:layout_gravity="top"
+        android:layout_margin="30dp"
+        android:background="@drawable/place_autocomplete_border">
+
+        <fragment
+            android:id="@+id/place_autocomplete_fragment"
+            android:name="com.google.android.gms.location.places.ui.SupportPlaceAutocompleteFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
 
 </FrameLayout>

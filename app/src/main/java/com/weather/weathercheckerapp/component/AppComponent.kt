@@ -2,6 +2,7 @@ package com.weather.weathercheckerapp.component
 
 import com.weather.weathercheckerapp.WeatherApplication
 import com.weather.weathercheckerapp.module.ActivityBuilderModule
+import com.weather.weathercheckerapp.module.FragmentBuilderModule
 import com.weather.weathercheckerapp.module.ViewModelFactoryModule
 import com.weather.weathercheckerapp.module.ViewModelModule
 import dagger.BindsInstance
@@ -11,7 +12,11 @@ import dagger.android.support.AndroidSupportInjectionModule
 import javax.inject.Singleton
 
 @Singleton
-@Component(modules = [ViewModelFactoryModule::class, ViewModelModule::class, AndroidSupportInjectionModule::class, ActivityBuilderModule::class])
+@Component(modules = [ViewModelFactoryModule::class,
+    ViewModelModule::class,
+    AndroidSupportInjectionModule::class,
+    ActivityBuilderModule::class,
+    FragmentBuilderModule::class])
 interface AppComponent : AndroidInjector<WeatherApplication> {
 
     override fun inject(application: WeatherApplication)
