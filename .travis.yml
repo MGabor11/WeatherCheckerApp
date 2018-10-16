@@ -55,7 +55,7 @@ before_script:
  # - echo no | android create avd --force -n test -t android-$ANDROID_API_LEVEL --abi $ANDROID_ABI
   - export CURRENT_PATH=`pwd`
   - cd $ANDROID_HOME/tools/bin
-  - echo no | avdmanager create avd -n test -k system-images;android-28;google_apis_playstore;x86_64
+  - echo no | ./avdmanager create avd -n test -k system-images;android-28;google_apis_playstore;x86_64
   - cd ..
   - emulator -avd test -no-audio -no-window &
   - adb wait-for-device
