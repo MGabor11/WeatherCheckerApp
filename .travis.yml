@@ -48,6 +48,7 @@ licenses:
 
 before_install:
 - yes | sdkmanager "platforms;android-$ANDROID_API_LEVEL"
+- yes | sdkmanager "tools"
 - chmod +x gradlew
 # Emulator Management: Create, Start and Wait
 before_script:
@@ -57,7 +58,7 @@ before_script:
   - cd $ANDROID_HOME/tools/bin
   - pwd
   - ls -als
-  - ./avdmanager create avd -n test -k system-images;android-28;google_apis_playstore;x86_64
+  - echo no | ./avdmanager create avd -n test -k system-images;android-28;google_apis_playstore;x86_64
   - cd ..
   - emulator -avd test -no-audio -no-window &
   - adb wait-for-device
