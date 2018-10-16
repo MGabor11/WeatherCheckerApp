@@ -12,9 +12,9 @@ cache:
     - $HOME/.android/build-cache
 env:
   global:
-    - ANDROID_API_LEVEL=28
+    - ANDROID_API_LEVEL=25
     - ANDROID_BUILD_TOOLS_VERSION=28.0.2
-    - ANDROID_ABI=x86_64
+    - ANDROID_ABI=armeabi-v7a
     - ANDROID_HOME=/usr/local/android-sdk
 android:
   components:
@@ -32,8 +32,8 @@ android:
 
     # Specify at least one system image,
     # if you need to run emulator(s) during your tests
-#    - sys-img-$ANDROID_ABI-android-$ANDROID_API_LEVEL
-#    - addon-google_apis-google-28
+    - sys-img-$ANDROID_ABI-android-$ANDROID_API_LEVEL
+    - addon-google_apis-google-25
 #    - sys-img-x86_64-google_apis-android-28
 licenses:
 - android-sdk-preview-license-.+
@@ -55,7 +55,7 @@ before_script:
   - cd $ANDROID_HOME/tools/bin
   - pwd
   - ls -als
-  - echo no | ./avdmanager create avd -n test -k "system-images;android-28;default;x86_64"
+  - echo no | ./avdmanager create avd -n test -k "system-images;android-25;google_apis;armeabi-v7a"
   - cd ..
   - emulator -avd test -no-audio -no-window &
   - adb wait-for-device
