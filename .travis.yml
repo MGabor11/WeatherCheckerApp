@@ -42,7 +42,10 @@ licenses:
 
 before_install:
 - echo y | sdkmanager "platforms;android-$ANDROID_API_LEVEL"
+- echo y
 - echo y | sdkmanager "tools"
+- echo y
+- echo y | sdkmanager "extras;intel;Hardware_Accelerated_Execution_Manager"
 - echo y
 - chmod +x gradlew
 # Emulator Management: Create, Start and Wait
