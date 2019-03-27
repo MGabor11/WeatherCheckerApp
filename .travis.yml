@@ -37,14 +37,15 @@ script:
 - android list target
 - ./gradlew clean build check
 
+
+
 deploy:
   provider: releases
   api_key: $GH_TOKEN
   file: $TRAVIS_BUILD_DIR/app/build/outputs/apk/debug/app-debug.apk
   skip_cleanup: true
-  on:
-    all_branches: true
-    tags: false
+  draft: true
+
 
 after_deploy:
 - rm -rf $TRAVIS_BUILD_DIR/app/build/outputs
