@@ -38,12 +38,14 @@ script:
 - ./gradlew clean build check
 
 before_deploy:
-  - export APP_VERSION=$(grep "versionName" $TRAVIS_BUILD_DIR/app/build.gradle | awk '{print $2}')
-  - echo $APP_VERSION
+  - export APP_VERSION_NAME=$(grep "versionName" $TRAVIS_BUILD_DIR/app/build.gradle | awk '{print $2}')
+  - echo $APP_VERSION_NAME
+  - export APP_VERSION_CODE=$(grep "versionCode" $TRAVIS_BUILD_DIR/app/build.gradle | awk '{print $2}')
+  - echo $APP_VERSION_CODE
   - git config --local user.email "builds@travis-ci.com"
   - git config --local user.name "Travis CI"
-  - export GIT_TAG=$TRAVIS_BRANCH-0.1.$TRAVIS_BUILD_NUMBER
-  - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER"
+  - export GIT_TAG=$TRAVIS_BRANCH-$APP_VERSION-$TRAVIS_BUILD_NUMBER
+  - git tag $GIT_TAG -a -m "Generated tag from TravisCI for build $TRAVIS_BUILD_NUMBER. Application versionName ${APP_VERSION_NAME}, versionCode ${APP_VERSION_CODE}"
   - git push -q https://${GH_TOKEN}@github.com/MGabor11/WeatherCheckerApp --tags
 
 deploy:
