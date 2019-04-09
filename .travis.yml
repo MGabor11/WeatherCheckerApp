@@ -42,6 +42,7 @@ before_deploy:
   - echo $APP_VERSION_NAME
   - export APP_VERSION_CODE=$(grep "versionCode" $TRAVIS_BUILD_DIR/app/build.gradle | awk '{print $2}')
   - echo $APP_VERSION_CODE
+  - echo $APP_VERSION_CODE
   - git config --local user.email "builds@travis-ci.com"
   - git config --local user.name "Travis CI"
   - export GIT_TAG=$TRAVIS_BRANCH-$APP_VERSION_NAME-$TRAVIS_BUILD_NUMBER
