@@ -50,6 +50,7 @@ before_deploy:
 
 deploy:
   provider: releases
+  prerelease: true
   api_key: $GH_TOKEN
   file: $TRAVIS_BUILD_DIR/app/build/outputs/apk/debug/app-debug.apk
   skip_cleanup: true
