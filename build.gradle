@@ -1,0 +1,45 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+
+
+buildscript {
+    ext.kotlin_version = '1.2.71'
+    ext.lifecycle_version = "2.0.0"
+    ext.dagger_version = "2.16"
+    ext.test_runner = "1.1.0-alpha4"
+    ext.nav_version = "1.0.0-alpha06"
+    ext.detekt_version = "1.0.0.RC9.2"
+    ext.target_sdk_version = "28"
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.2.0'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "android.arch.navigation:navigation-safe-args-gradle-plugin:1.0.0-alpha06"
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.6.2"
+        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.3'
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+plugins {
+    id('io.gitlab.arturbosch.detekt').version('1.0.0.RC9.2')
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+
